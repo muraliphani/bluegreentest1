@@ -9,6 +9,7 @@ node(){
    stage("Build and UT"){
       sh "cd devtest1"
       sh "mvn package"
+      sh "ls -l"
       
 }
 
