@@ -1,6 +1,6 @@
 node(){
    stage("git checkout"){
-      git clone
+      checkout scm
       sh "pwd"
       sh "ls -l"
    }
