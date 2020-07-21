@@ -7,12 +7,10 @@ node(){
       sh "ls -l"
    }
    stage("Build and UT"){
-      sh "pwd"
-      sh "cd ${WORKSPACE}/devtest1"
-      sh "pwd"
-      sh "ls -l"
-      sh "mvn package"
-      
+      def directory = "devtest1"
+		dir(directory){
+            sh "mvn package"
+      }
       
 }
 
