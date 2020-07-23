@@ -13,7 +13,7 @@ node(){
       }
 	   
 	stage("Upload to s3"){
-	   withAWS(credentials: 'awscredentials', region: 'US East (N. Virginia)') {
+	   withAWS(credentials: 'awscredentials', region: 'us-east-1') {
     		
 		   s3Upload acl: 'Private', bucket: 'devtest007', cacheControl: '',			    
 			   file: 'devtest1.war',		  
