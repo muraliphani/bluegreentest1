@@ -17,7 +17,7 @@ node(){
     		
 		   s3Upload acl: 'Private', bucket: 'devtest007', cacheControl: '',			    
 			   file: 'devtest1.war',		  
-			   path: '/var/lib/jenkins/workspace/muralipipeline/devtest1/target/devtest1.war',			    
+			   path: '/devops/devtest1',			    
 			   workingDir: '/var/lib/jenkins/workspace/muralipipeline/devtest1/target'
              }
 		
