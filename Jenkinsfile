@@ -10,6 +10,7 @@ node(){
 		dir(directory){
       
             sh "mvn package"
+		}	
       }
   
 }
