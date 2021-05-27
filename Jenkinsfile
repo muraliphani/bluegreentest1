@@ -6,7 +6,9 @@ node(){
    }
 	
 	stage("check mvn"){
-	sh "mvn -v"
+	def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+	sh "${mvnHome}/bin/mvn -v"
+	
 	}	
   stage("Build"){
     
