@@ -4,18 +4,13 @@ node(){
       checkout scm
      
    }
-	
-	stage("check mvn"){
-	def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
-	sh "${mvnHome}/bin/mvn -v"
-	
-	}	
+		
   stage("Build"){
-    
+    def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
     def directory = "devtest1"
 		dir(directory){
       
-            sh "mvn -v"
+            sh "${mvnHome}/bin/mvn package"
 		}	
       }
   
