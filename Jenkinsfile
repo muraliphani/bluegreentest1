@@ -33,7 +33,7 @@ node(){
 			
   		 
 }
-		sh "cd ${workspace}/artifactory"
+		sh "cd /${workspace}/artifactory"
 		sh "ls -l"
 		
 	
