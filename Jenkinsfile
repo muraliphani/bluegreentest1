@@ -34,11 +34,7 @@ node(){
   		 
 }
 		
-		def directory= "artifactoryv3"
-		dir(directory){
-      
-            sh "ls -l"
-		}	
+		sh "pwd"
 		
 		
 	
