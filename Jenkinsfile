@@ -25,16 +25,16 @@ node(){
 	
 	}
 	stage("Download artifact from S3"){
-		sh "mkdir ${workspace}/artifactoryv6"
-		def sourcepath = "${workspace}/artifactoryv6"
+		#sh "mkdir ${workspace}/artifactoryv6"
+		#def sourcepath = "${workspace}/artifactoryv6"
 		
 		withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'madhuawsid', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-		s3Download(file:sourcepath, bucket:'bucket1-madhu', path:'project1/devtest1.war', force:true)	
+		s3Download(file:'devtest1.war', bucket:'bucket1-madhu', path:'project1/devtest1.war', force:true)	
 			
   		 
 }
 		
-		sh "ls -l ${workspace}/artifactoryv6"
+		sh "ls -l"
 		
 		
 	
