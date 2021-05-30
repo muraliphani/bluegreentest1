@@ -1,0 +1,37 @@
+node(){
+
+stage ("checkout SCM")
+{ 
+  checkout SCM
+}
+
+stage ("Build") {
+
+   def mvnHome = tool name: 'MAVEN_HOME', type: 'maven'
+   def directory = "devtest1"
+     
+     dir(directory) {
+       sh "${mvnHome}/bin/mvn package"
+     }
+     
+  
+
+  
+}
+
+stage ("Upload to S3") {
+  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWSCreds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+    s3Upload bucket: 'bucket1-madhu', file: '/var/lib/jenkins/workspace/PipelineDemo/devtest1/target/devtest1.war', path: 'project1/' 
+}
+}
+
+stage ("Download from S3") {
+
+ withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWSCreds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+ s3Download bucket: 'bucket1-madhu', file: 'devtest1.war', force: true, path: 'project1/devtest1.war'
+ }
+  
+}
+
+}
+ 
