@@ -33,5 +33,15 @@ stage ("Download from S3") {
   
 }
 
+stage("Create ec2 instance"){
+   def directory = "terraform"
+     
+     dir(directory) {
+       sh "terraform init"
+	   sh "terraform apply -auto-approve"
+     }
+
+}
+
 }
  
