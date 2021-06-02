@@ -34,11 +34,14 @@ stage ("Download from S3") {
 }
 
 stage("Create ec2 instance"){
+  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWSCreds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
    def directory = "terraform"
+
      
      dir(directory) {
        sh "terraform init"
 	   sh "terraform apply -auto-approve"
+     }
      }
 
 }
