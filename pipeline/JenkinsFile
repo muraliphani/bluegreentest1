@@ -51,7 +51,7 @@ stage("configure httpd on ec2"){
 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-keypair', keyFileVariable: '', passphraseVariable: '', usernameVariable: '')]) {
    def directory = "terraform"
    dir(directory){
-   sh "ansible -m ping all -i "${ip_address},""
+   sh "ansible -m ping all -i ${ip_address}"
    sh "ansible-playbook webserverconfig.yml -i  ${ip_address}"
    }
 }
