@@ -41,7 +41,7 @@ stage("Create ec2 instance"){
      dir(directory) {
        sh "terraform init"
 	   sh "terraform apply -auto-approve"
-	   ip_address = $(ec2instance_ip)
+	   ip_address = $(sh "terraform output ec2instance_ip")
      }
      }
 
