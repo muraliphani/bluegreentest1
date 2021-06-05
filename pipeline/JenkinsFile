@@ -1,5 +1,5 @@
 node(){
-def ip_address
+def ip_address=""
 stage ("checkout SCM")
 { 
   checkout scm
