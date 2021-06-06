@@ -1,5 +1,5 @@
 node(){
-
+  def ip_address=""
 stage ("checkout SCM")
 { 
   checkout scm
@@ -41,7 +41,7 @@ stage("Create ec2 instance"){
      dir(directory) {
        sh "terraform init"
 	   sh "terraform apply -auto-approve"
-	   def ip_address = ${sh "terraform output ec2instance_ip"}
+	   ip_address = sh(script: "terraform output ec2instance_ip", returnStdout: true).toString().trim()
 	   sh "echo ${ip_address}"
      }
      }
