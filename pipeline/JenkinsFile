@@ -55,7 +55,7 @@ withCredentials([sshUserPrivateKey(credentialsId: 'ec2-keypair', keyFileVariable
    def directory = "ansible"
    dir(directory){
    sh "${ansible_home}/ansible -m ping all -i ${ip_address} ansible_python_interpreter=/usr/bin/python3.8"
-   sh "${ansible_home}/ansible-playbook webserverconfig.yml -i  ${ip_address} ansible_python_interpreter=/usr/bin/python3.8"
+   sh "${ansible_home}/ansible-playbook webserverconfig.yml -i  ${ip_address} -i inventory.txt"
    }
 }
 
