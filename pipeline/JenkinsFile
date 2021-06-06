@@ -52,7 +52,7 @@ stage("configure httpd on ec2"){
     def ansible_home = tool name: 'ansible_home', type: 'org.jenkinsci.plugins.ansible.AnsibleInstallation'
    sh "echo ${ip_address}"
 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-keypair', keyFileVariable: '', passphraseVariable: '', usernameVariable: '')]) {
-   def directory = "terraform"
+   def directory = "ansible"
    dir(directory){
    sh "${ansible_home}/ansible -m ping all -i ${ip_address} ansible_python_interpreter=/usr/bin/python3.8"
    sh "${ansible_home}/ansible-playbook webserverconfig.yml -i  ${ip_address} ansible_python_interpreter=/usr/bin/python3.8"
